@@ -4,9 +4,9 @@ $(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://jsonplaceholder.typicode.com/todos/1",
+    url: "https://jsonplaceholder.typicode.com/todos/2",
     success: function (informations) {
-      $informations.append("<li> UserID: " + informations.UserId + "  ID: " + informations.id + "  Title: " + informations.title + " completed: " + informations.completed + "  <button id='del'>Delete</button> </li>");
+      $informations.append("<li> ID: " + informations.id + "  Title: " + informations.title + " completed: " + informations.completed + "  <button id='del'>Delete</button> </li>");
     },
     error: function () {
       informations.innerHTML("Error! Can't get Data From API.")
@@ -15,19 +15,18 @@ $(function () {
 
   $("#button").on("click", function () {
     var information = {
-      UserId: $("#UserId").val(),
       id: $("#id").val(),
       title: $("#title").val(),
       completed: $("#completed").val()
     };
-    
+
 
     $.ajax({
       type: "POST",
       url: "https://jsonplaceholder.typicode.com/todos/",
       data: information,
       success: function (newInformation) {
-        $informations.append("<li> UserID: " + newInformation.UserId + "  ID: " + newInformation.id + "  Title: " + newInformation.title + " completed: " + newInformation.completed + "  <button id ='del'>Delete</button>"+"</li>");
+        $informations.append("<li> ID: " + newInformation.id + "  Title: " + newInformation.title + " completed: " + newInformation.completed + "  <button id ='del'>Delete</button>"+"</li>");
       },
       error: function () {
         alert("ERROR!")
